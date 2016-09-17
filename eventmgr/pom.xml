@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<!--
+		Copyright (C) 2010-2016, Petri Virkkula.
+
+		This library is free software; you can redistribute
+		it and/or modify it under the terms of Artistic License
+		version 2.0. For more details, see the full text
+		of the license in the file LICENSE.
+
+		Disclaimer of Warranty:
+		THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND
+		CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED
+		WARRANTIES. THE IMPLIED WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT
+		ARE DISCLAIMED TO THE EXTENT PERMITTED BY YOUR LOCAL LAW.
+		UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR CONTRIBUTOR
+		WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR
+		CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE
+		OF THE PACKAGE, EVEN IF ADVISED OF THE POSSIBILITY OF
+		SUCH DAMAGE.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.petrivirkkula.toolbox</groupId>
+		<artifactId>toolbox</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>toolbox-eventmgr</artifactId>
+	<name>Toolbox Eventmgr Classes</name>
+	<description>Toolbox Eventmgr Classes</description>
+    <licenses>
+		<license>
+			<name>Artistic License 2.0</name>
+			<url>https://opensource.org/licenses/Artistic-2.0</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Petri Virkkula</name>
+			<email>petri@petrivirkkula.com</email>
+		</developer>
+	</developers>
+    <scm>
+		<connection>scm:git:git@github.com:petrivirkkula/toolbox.git</connection>
+	    <url>scm:git:git@github.com:petrivirkkula/toolbox.git</url>
+		<developerConnection>scm:git:git@github.com:petrivirkkula/toolbox.git</developerConnection>
+    </scm>
+  	<distributionManagement>
+		<repository>
+			<id>ossrh</id>
+			<name>OSS Releases</name>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<name>OSS Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.googlecode.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>${jmockit.version}</version>
+			<scope>test</scope>
+		</dependency>
+<!--
+		<dependency>
+		 	<groupId>com.googlecode.jmockit</groupId>
+		 	<artifactId>jmockit-coverage</artifactId>
+			<version>${jmockit.coverage.version}</version>
+			<scope>test</scope>
+		</dependency>
+-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.petrivirkkula.toolbox</groupId>
+			<artifactId>toolbox-logger</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+     		<artifactId>slf4j-log4j12</artifactId>
+     		<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency> 
+		  <groupId>org.testng</groupId> 
+		  <artifactId>testng</artifactId> 
+		  <scope>test</scope> 
+		</dependency> 
+	</dependencies>
+	<build>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<includes>
+					<include>log4j.properties</include>
+				</includes>
+			</testResource>
+		</testResources>
+		<plugins>
+		    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<docfilessubdirs>true</docfilessubdirs>
+					<linksource>true</linksource>
+<!--
+					<links>
+						<link>http://download.oracle.com/javase/6/docs/api/</link>
+						<link>http://download.oracle.com/javaee/6/api/</link>
+						<link>http://jakarta.apache.org/commons/collections/apidocs</link>
+						<link>http://jakarta.apache.org/commons/logging/apidocs/</link>
+						<link>http://junit.sourceforge.net/javadoc/</link>
+						<link>http://logging.apache.org/log4j/1.2/apidocs/</link>
+						<link>http://jakarta.apache.org/regexp/apidocs/</link>
+						<link>http://jakarta.apache.org/velocity/api/</link>
+					</links>
+-->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>${surefire.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-testng</artifactId>
+						<version>${surefire.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<threadCount>1</threadCount>
+					<argLine>
+						-javaagent:"${settings.localRepository}"/com/googlecode/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+						-Djmockit-coverage-outputDir=${project.build.directory}/test-coverage-report
+						-Djmockit-coverage-output=html
+<!--
+						-Djmockit-coverage-check="Total:80,50,70;perFile:80,50,70;com.petrivirkkula.toolbox.eventmgr:80,50,70"
+-->
+					</argLine>
+
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<docfilessubdirs>true</docfilessubdirs>
+					<linksource>true</linksource>
+<!--
+					<links>
+						<link>http://download.oracle.com/javase/6/docs/api/</link>
+						<link>http://download.oracle.com/javaee/6/api/</link>
+						<link>http://jakarta.apache.org/commons/collections/apidocs</link>
+						<link>http://jakarta.apache.org/commons/logging/apidocs/</link>
+						<link>http://junit.sourceforge.net/javadoc/</link>
+						<link>http://logging.apache.org/log4j/1.2/apidocs/</link>
+						<link>http://jakarta.apache.org/regexp/apidocs/</link>
+						<link>http://jakarta.apache.org/velocity/api/</link>
+					</links>
+-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>  
+</project>
