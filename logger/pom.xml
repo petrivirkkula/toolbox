@@ -30,6 +30,7 @@
 	<artifactId>toolbox-logger</artifactId>
 	<name>Toolbox Logging Classes</name>
 	<description>Toolbox logging classes.</description>
+	<url>http://github.com/petrivirkkula/toolbox/</url>
 	<licenses>
 		<license>
 			<name>Artistic License 2.0</name>
