@@ -70,6 +70,9 @@ public class ParallelAsyncExecutor implements Executor
 	
 	/**
 	 * Constructor with min and max thread parameters.
+	 * 
+	 * @param	minThreads		min threads to always keep
+	 * @param	maxThreads		max threads to use
 	 */
 	public ParallelAsyncExecutor(int minThreads, int maxThreads) {
 		this.workQueue = new LinkedBlockingQueue<Runnable>();
@@ -87,6 +90,8 @@ public class ParallelAsyncExecutor implements Executor
 	/**
 	 * Creates a new thread pool executor.
 	 * 
+	 * @param	minThreads		min threads to always keep
+	 * @param	maxThreads		max threads to use
 	 * @return	executor
 	 */
 	protected Executor createExecutor(int minThreads, int maxThreads) {

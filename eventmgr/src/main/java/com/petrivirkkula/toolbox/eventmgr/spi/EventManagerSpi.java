@@ -115,6 +115,7 @@ public abstract class EventManagerSpi extends EventManager
 	/**
 	 * Lookups for event handler list for given event.
 	 * 
+	 * @param	<E>		event class
 	 * @param	event	event
 	 * @return	event handler list
 	 */

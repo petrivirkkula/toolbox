@@ -41,7 +41,7 @@ public interface EventHandler<E extends Event>
 	/**
 	 * Processes an event.
 	 * 
-	 * @param event
+	 * @param event		event
 	 */
 	public void on(E event);
 }

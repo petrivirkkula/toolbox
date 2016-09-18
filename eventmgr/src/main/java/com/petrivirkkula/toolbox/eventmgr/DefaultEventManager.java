@@ -170,8 +170,9 @@ public class DefaultEventManager extends EventManagerSpi
 	/**
 	 * Looks up for event handler list for the given event name.
 	 * 
-	 * @param eventSource	event source
-	 * @param create		in case no handlers exists: if true create a new handler list if none exists for the event name; otherwise return null 
+	 * @param	handlerMap	handler map
+	 * @param	eventName	event name
+	 * @param	create		in case no handlers exists: if true create a new handler list if none exists for the event name; otherwise return null 
 	 * @return				handler list, or null if create is false and no handler list exists for the event name
 	 */
 protected List<EventHandler<? extends Event>> lookupHandlersFor(Map<String,List<EventHandler<? extends Event>>> handlerMap, String eventName, boolean create) {
