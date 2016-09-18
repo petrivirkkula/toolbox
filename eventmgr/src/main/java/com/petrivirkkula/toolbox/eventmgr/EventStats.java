@@ -48,8 +48,6 @@ public interface EventStats extends java.io.Serializable
 	public int getTotalEventCount();
 
 
-
-
 	/**
 	 * @return the totalHandlerCount
 	 */
@@ -80,6 +78,12 @@ public interface EventStats extends java.io.Serializable
 	public SortedMap<String,Integer> getHandlerStats();
 	
 	
+	/**
+	 * Writes event stats to writer.
+	 * 
+	 * @param writer	writer to use
+	 * @throws IOException	an I/O error occurred during writing
+	 */
 	public void printEventStats(Writer writer) throws IOException;
 		
 }

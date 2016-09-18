@@ -31,6 +31,9 @@ import java.util.concurrent.Executor;
 /**
  * A Sequential Asynchronous Executor.
  * 
+ * Events are processed by this executor parallel in a separate thread one by by
+ * in serial fashion.
+ * 
  * @author		Petri Virkkula
  * @version		$Id$
  */
@@ -52,8 +55,14 @@ public class SequentialAsyncExecutor implements Executor
 		logger.loaded(RCSID, SequentialAsyncExecutor.class);
 	}
 
+	/**
+	 * The pending list of tasks.
+	 */
 	private final List<Runnable> tasks;
 
+	/**
+	 * The thread that processes the tasks.
+	 */
 	private final Thread asyncThread;
 	
 	
@@ -119,6 +128,8 @@ public class SequentialAsyncExecutor implements Executor
 
 
 	/**
+	 * Gets the thread used by this executor.
+	 * 
 	 * @return the asyncThread
 	 */
 	protected Thread getAsyncThread() {
@@ -127,6 +138,8 @@ public class SequentialAsyncExecutor implements Executor
 
 
 	/**
+	 * Gets the current task list.
+	 * 
 	 * @return the tasks
 	 */
 	protected List<Runnable> getTasks() {

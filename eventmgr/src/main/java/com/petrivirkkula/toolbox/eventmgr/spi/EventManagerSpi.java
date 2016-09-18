@@ -55,39 +55,69 @@ public abstract class EventManagerSpi extends EventManager
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventManagerSpi.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventManagerSpi.class);
 
 	static {
-		logger.loaded(RCSID, EventManagerSpi.class);
+		LOGGER.loaded(RCSID, EventManagerSpi.class);
 	}
 
+	
 	/**
 	 * Event Executor factory.
 	 */
 	private EventExecutorFactory executorFactory;
 	
+	/**
+	 * Event stats.
+	 */
 	private final EventStatsSpi eventStats = new EventStatsSpi();
 
+	
+	/**
+	 * Mutex protecting <code>lookupCounter</code>.
+	 */
 	private final Object lookupCounterMutex = new Object();
 	
+	/**
+	 *  Lookup active thread count.
+	 */
 	private int lookupCounter = 0;
 	
+	
+	/**
+	 * Mutex guarding the <code>processingCounter</code>
+	 */
 	private final Object processingCounterMutex = new Object();
 	
+	
+	/**
+	 * Active processing thread count.
+	 */
 	private int processingCounter = 0;
 	
 	
 	/**
-	 * Gets logger.
+	 * Gets LOGGER.
 	 * 
-	 * @return	logger
+	 * @return	LOGGER
 	 */
 	protected abstract com.petrivirkkula.toolbox.logger.Logger getLogger();
 	
 
+	/**
+	 * Gets event handler usage counts.
+	 * 
+	 * @return	map of event handler usage counts
+	 */
 	public abstract Map<Object,Map<String,Integer>> getEventHandlerCounts();
 	
 	
+	/**
+	 * Lookups for event handler list for given event.
+	 * 
+	 * @param	event	event
+	 * @return	event handler list
+	 */
 	protected abstract <E extends Event> List<EventHandler<? extends Event>> lookupHandlers(final E event);
 
 
@@ -102,18 +132,26 @@ public abstract class EventManagerSpi extends EventManager
 	}
 
 
-
-
 	/**
+	 * Gets the executor factory for this event manager.
+	 * 
 	 * @return the executorFactory
 	 */
 	protected EventExecutorFactory getExecutorFactory() {
 		return executorFactory;
 	}
 
+	
+	/**
+	 * Records event stats
+	 * 
+	 * @param eventName		name of event
+	 * @param handlerCount	added calls to the event name
+	 */
 	protected void recordStat(String eventName, int handlerCount) {
 		eventStats.recordStat(eventName, handlerCount);
 	}
+
 	
 	@Override
 	public EventStats getEventStats() {
@@ -202,6 +240,9 @@ public abstract class EventManagerSpi extends EventManager
 		});
 	}
 
+	/**
+	 * Records completion of event lookup.
+	 */
 	private void eventLookupCompleted() {
 		synchronized(lookupCounterMutex) {
 			lookupCounter--;
@@ -210,12 +251,20 @@ public abstract class EventManagerSpi extends EventManager
 		}
 	}
 
+	
+	/**
+	 * Records start of event lookup.
+	 */
 	private void eventLookupStarted() {
 		synchronized(lookupCounterMutex) {
 			lookupCounter++;
 		}
 	}
 
+	
+	/**
+	 * Records completion of event processing.
+	 */
 	private void eventProcessingCompleted() {
 		synchronized(processingCounterMutex) {
 			processingCounter--;
@@ -224,6 +273,10 @@ public abstract class EventManagerSpi extends EventManager
 		}
 	}
 
+	
+	/**
+	 * Records start of event processing.
+	 */
 	private void eventProcessingStarted() {
 		synchronized(processingCounterMutex) {
 			processingCounter++;

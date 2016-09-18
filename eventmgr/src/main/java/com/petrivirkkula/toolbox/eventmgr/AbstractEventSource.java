@@ -46,42 +46,37 @@ public abstract class AbstractEventSource extends EventSourceSpi implements Even
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(AbstractEventSource.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(AbstractEventSource.class);
 
 	static {
-		logger.loaded(RCSID, AbstractEventSource.class);
+		LOGGER.loaded(RCSID, AbstractEventSource.class);
 	}
 
+	/**
+	 * Gets the event manager linked with this event source.
+	 */
 	protected abstract EventManager getEventManager();	
 	
 	
-	/**
-	 * Registers an event handler for an event.
-	 *
-	 * @param eventClass		class of the event
-	 * @param eventHandler		event handler
-	 */
+	@Override
 	public <E extends Event> void register(Class<E> eventClass, EventHandler<E> eventHandler) {
 		super.register(eventClass, eventHandler);
 	}
 
 	
-	/**
-	 * Registers an event handler for an event in source.
-	 * 
-	 * @param eventName		name of the event
-	 * @param eventHandler	event handler
-	 */
+	@Override
 	public <E extends Event> void register(String eventName, EventHandler<E> eventHandler) {
 		super.register(eventName, eventHandler);
 	}
 
 	
+	@Override
 	public <E extends Event> void unregister(Class<E> eventClass, EventHandler<E> eventHandler) {
 		super.unregister(eventClass, eventHandler);
 	}
 
 	
+	@Override
 	public <E extends Event> void unregister(String eventName, EventHandler<E> eventHandler) {
 		super.unregister(eventName, eventHandler);
 	}

@@ -47,15 +47,24 @@ public class DefaultEventExecutorFactory implements EventExecutorFactory
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(DefaultEventExecutorFactory.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(DefaultEventExecutorFactory.class);
 
 	static {
-		logger.loaded(RCSID, DefaultEventExecutorFactory.class);
+		LOGGER.loaded(RCSID, DefaultEventExecutorFactory.class);
 	}
 
+	/**
+	 * Executor to use for looking up event handlers. 
+	 */
 	private final Executor lookupExecutor;
+	
+	
+	/**
+	 * Executor to use for calling event handlers.
+	 */
 	private final Executor processExecutor;
 
+	
 	/**
 	 * Constructor with no parameters.
 	 *
@@ -99,12 +108,12 @@ public class DefaultEventExecutorFactory implements EventExecutorFactory
 
 	
 	/**
-	 * Gets logger.
+	 * Gets LOGGER.
 	 * 
-	 * @return	logger
+	 * @return	LOGGER
 	 */
 	protected com.petrivirkkula.toolbox.logger.Logger getLogger() {
-		return logger;
+		return LOGGER;
 	}
 
 

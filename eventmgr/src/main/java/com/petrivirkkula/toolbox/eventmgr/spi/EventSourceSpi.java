@@ -44,12 +44,17 @@ public abstract class EventSourceSpi
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventSourceSpi.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventSourceSpi.class);
 
 	static {
-		logger.loaded(RCSID, EventSourceSpi.class);
+		LOGGER.loaded(RCSID, EventSourceSpi.class);
 	}
 
+	/**
+	 * Gets the event manager associated with this event source.
+	 * 
+	 * @return	event manager
+	 */
 	protected abstract EventManager getEventManager();	
 	
 	

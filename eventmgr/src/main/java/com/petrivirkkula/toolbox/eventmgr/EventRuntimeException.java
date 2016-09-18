@@ -40,10 +40,10 @@ public class EventRuntimeException extends RuntimeException
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventRuntimeException.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventRuntimeException.class);
 
 	static {
-		logger.loaded(RCSID, EventRuntimeException.class);
+		LOGGER.loaded(RCSID, EventRuntimeException.class);
 	}
 
 	/**

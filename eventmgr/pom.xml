@@ -32,6 +32,7 @@
 	<artifactId>toolbox-eventmgr</artifactId>
 	<name>Toolbox Eventmgr Classes</name>
 	<description>Toolbox Eventmgr Classes</description>
+	<url>http://github.com/petrivirkkula/toolbox/</url>
     <licenses>
 		<license>
 			<name>Artistic License 2.0</name>
@@ -71,14 +72,12 @@
 			<version>${jmockit.version}</version>
 			<scope>test</scope>
 		</dependency>
-<!--
 		<dependency>
 		 	<groupId>com.googlecode.jmockit</groupId>
 		 	<artifactId>jmockit-coverage</artifactId>
 			<version>${jmockit.coverage.version}</version>
 			<scope>test</scope>
 		</dependency>
--->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -167,7 +166,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-gpg-plugin</artifactId>
-
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>

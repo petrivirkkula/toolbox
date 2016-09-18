@@ -53,19 +53,18 @@ public class DefaultEventManager extends EventManagerSpi
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(DefaultEventManager.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(DefaultEventManager.class);
 
 	static {
-		logger.loaded(RCSID, DefaultEventManager.class);
+		LOGGER.loaded(RCSID, DefaultEventManager.class);
 	}
 
+	
 	/**
 	 * Map of handlers.
 	 */
 	private final Map<Object,SortedMap<String,List<EventHandler<? extends Event>>>> eventHandlers;
-	
-	
-	
+		
 	
 	/**
 	 * Constructor without parameters.
@@ -78,12 +77,12 @@ public class DefaultEventManager extends EventManagerSpi
 
 
 	/**
-	 * Gets logger.
+	 * Gets LOGGER.
 	 * 
-	 * @return	logger
+	 * @return	LOGGER
 	 */
 	protected com.petrivirkkula.toolbox.logger.Logger getLogger() {
-		return logger;
+		return LOGGER;
 	}
 
 	
@@ -145,7 +144,14 @@ public class DefaultEventManager extends EventManagerSpi
 		return handlers;
 	}
 
-	
+
+	/**
+	 * Looks up for handler map for a given event source.
+	 * 
+	 * @param eventSource	event source
+	 * @param create		in case no handler map exists: if true create a new handler map if none exists for the event source; otherwise return null 
+	 * @return				handler map, or null if create is false and no handler map exists for the event source
+	 */
 	protected Map<String,List<EventHandler<? extends Event>>> lookupHandlerMapFor(Object eventSource, boolean create) {
 		SortedMap<String,List<EventHandler<? extends Event>>> handlerMap = null;
 		synchronized(eventHandlers) {
@@ -160,7 +166,15 @@ public class DefaultEventManager extends EventManagerSpi
 		return handlerMap;
 	}
 
-	protected List<EventHandler<? extends Event>> lookupHandlersFor(Map<String,List<EventHandler<? extends Event>>> handlerMap, String eventName, boolean create) {
+
+	/**
+	 * Looks up for event handler list for the given event name.
+	 * 
+	 * @param eventSource	event source
+	 * @param create		in case no handlers exists: if true create a new handler list if none exists for the event name; otherwise return null 
+	 * @return				handler list, or null if create is false and no handler list exists for the event name
+	 */
+protected List<EventHandler<? extends Event>> lookupHandlersFor(Map<String,List<EventHandler<? extends Event>>> handlerMap, String eventName, boolean create) {
 		List<EventHandler<? extends Event>> handlers = null;
 		synchronized(handlerMap) {
 			handlers = handlerMap.get(eventName);
@@ -175,6 +189,7 @@ public class DefaultEventManager extends EventManagerSpi
 	}
 
 	
+	@Override
 	public Map<Object,Map<String,Integer>> getEventHandlerCounts() {
 		Map<Object,Map<String,Integer>> result = new HashMap<Object,Map<String,Integer>>();
 		synchronized(eventHandlers) {

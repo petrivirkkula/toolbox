@@ -28,6 +28,8 @@ import java.util.concurrent.Executor;
 /**
  * Direct Executor.
  * 
+ * Event processing and handling is done by using calling threads.
+ * 
  * @author		Petri Virkkula
  * @version		$Id$
  */
@@ -43,10 +45,10 @@ public class DirectExecutor implements Executor
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(DirectExecutor.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(DirectExecutor.class);
 
 	static {
-		logger.loaded(RCSID, DirectExecutor.class);
+		LOGGER.loaded(RCSID, DirectExecutor.class);
 	}
 
 	

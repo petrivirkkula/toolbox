@@ -62,12 +62,24 @@ public abstract class EventManager
 		new EventManagerClassHolder();
 	}
 	
+	/**
+	 * Gets a new instance by using the default executor factory.
+	 * 
+	 * @return	new event manager
+	 */
 	public static EventManager getInstance() {
 		EventExecutorFactory executorFactory = DefaultEventExecutorFactory.getInstance();
 		Class<? extends EventManagerSpi> eventManagerClass = EventManagerClassHolder.DEFAULT_EVENT_MANAGER_CLASS;
 		return getInstance(executorFactory, eventManagerClass);
 	}
 
+	
+	/**
+	 * Gets a new instance by using the passed executor factory.
+	 * 
+	 * @param executorFactory	executor factory
+	 * @return	new event manager
+	 */
 	public static EventManager getInstance(EventExecutorFactory executorFactory) {
 		Class<? extends EventManagerSpi> eventManagerClass = EventManagerClassHolder.DEFAULT_EVENT_MANAGER_CLASS;
 		return getInstance(executorFactory, eventManagerClass);
@@ -134,15 +146,44 @@ public abstract class EventManager
 	public abstract <E extends Event> EventManager register(Object eventSource, String eventName, EventHandler<E> eventHandler);
 
 	
+	/**
+	 * Unregisters an event handler for given even originating from given event source.
+	 *
+	 * @param <E>			class of the event
+	 * @param eventSource	source of event
+	 * @param eventClass	event class
+	 * @param eventHandler	event handler
+	 * @return	this EventManager for call chaining
+	 */
 	public <E extends Event> EventManager unregister(Object eventSource, Class<E> eventClass, EventHandler<E> eventHandler) {
 		return unregister(eventSource, eventClass.getName(), eventHandler);
 	}
-
 	
+	/**
+	 * Unregisters an event handler for an event in source.
+	 * 
+	 * @param <E>			class of the event
+	 * @param eventSource	source of event
+	 * @param eventName		name of event
+	 * @param eventHandler	event handler
+	 * @return	this EventManager for call chaining
+	 */
 	public abstract <E extends Event> EventManager unregister(Object eventSource, String eventName, EventHandler<E> eventHandler);
 
+	
+	/**
+	 * Waits for completion of pending events.
+	 * 
+	 * @throws InterruptedException		if waiting was interrupted
+	 */
 	public abstract void waitForPendingEvents() throws InterruptedException;
 	
+	
+	/**
+	 * Get event manager statistics.
+	 * 
+	 * @return	event stats
+	 */
 	public abstract EventStats getEventStats();
 
 }

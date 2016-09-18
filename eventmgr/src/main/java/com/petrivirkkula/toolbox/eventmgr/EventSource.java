@@ -51,6 +51,7 @@ public interface EventSource
 	 */
 	public <E extends Event> void register(Class<E> eventClass, EventHandler<E> eventHandler);
 	
+	
 	/**
 	 * Registers an event handler for an event.
 	 * 
@@ -59,6 +60,7 @@ public interface EventSource
 	 * @param eventHandler	event handler
 	 */
 	public <E extends Event> void register(String eventName, EventHandler<E> eventHandler);
+	
 	
 	/**
 	 * Unregisters an event handler for an event.

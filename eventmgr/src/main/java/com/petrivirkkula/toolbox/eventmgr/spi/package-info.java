@@ -21,7 +21,8 @@
 
  
 /**
+ * Package for event manager classes that can be extended.
+ * 
  * @author Petri Virkkula
- *
  */
 package com.petrivirkkula.toolbox.eventmgr.spi;

@@ -21,8 +21,10 @@
 
 
 /**
-  * 
- * @author		Petri Virkkula
- * @version		$Id$
- */
+  * The eventmgr package provides a event management (event handler registration,
+  * event triggering, and event handler calling) API.
+  *
+  * @author		Petri Virkkula
+  * @version	$Id$
+  */
 package com.petrivirkkula.toolbox.eventmgr;

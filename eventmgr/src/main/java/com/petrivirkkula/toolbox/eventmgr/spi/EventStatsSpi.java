@@ -54,26 +54,55 @@ public class EventStatsSpi implements EventStats
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventStatsSpi.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventStatsSpi.class);
 
 	static {
-		logger.loaded(RCSID, EventStatsSpi.class);
+		LOGGER.loaded(RCSID, EventStatsSpi.class);
 	}
 
 	
+	/**
+	 * Stats of events.
+	 * Use this object to synchronize access to other fields.
+	 */
 	private final SortedMap<String,Integer> eventStats = new TreeMap<String,Integer>();
 
+	
+	/**
+	 * Stats of handlers.
+	 */
 	private final SortedMap<String,Integer> handlerStats = new TreeMap<String,Integer>();
 	
+	
+	/**
+	 * Total events triggered.
+	 */
 	private int totalEventCount = 0;
 
+	
+	/**
+	 * Total handlers called.
+	 */
 	private int totalHandlerCount = 0;
 
+	
+	/**
+	 * Time of last event procssed.
+	 */
 	private long lastEventTime = 0;
 
+	
+	/**
+	 * Start time of these statistics.
+	 */
 	private long startTime = System.currentTimeMillis();
 
 
+	/**
+	 * Creates a snapshots (a copy) of the stats.
+	 * 
+	 * @return	stats
+	 */
 	EventStatsSpi createSnapshot() {
 		EventStatsSpi result = new EventStatsSpi();
 		synchronized(eventStats) {
@@ -87,8 +116,15 @@ public class EventStatsSpi implements EventStats
 		return result;
 	}
 
+	
+	/**
+	 * Records event stats.
+	 * 
+	 * @param	eventName		event name
+	 * @param	handlerCount	how many handlers were called
+	 */
 	void recordStat(final String eventName, final int handlerCount) {
-//		logger.trace(new FormatterLoggable("event \"{0}\" called {1} handlers", new Object[] { eventName, handlerCount }));
+//		LOGGER.trace(new FormatterLoggable("event \"{0}\" called {1} handlers", new Object[] { eventName, handlerCount }));
 		synchronized(eventStats) {
 			Integer old = eventStats.get(eventName);
 			if (old == null)
@@ -200,6 +236,7 @@ public class EventStatsSpi implements EventStats
 		return handlerStats;
 	}
 
+	
 	@Override
 	public void printEventStats(Writer out) throws IOException {
 		out.write("EventStats:\n");
@@ -211,18 +248,54 @@ public class EventStatsSpi implements EventStats
 		printMap(out, "eventStats", eventStats);
 	}
 
+	
+	/**
+	 * Prints a Date field.
+	 * 
+	 * @param	out			out put writer	
+	 * @param	name		field name
+	 * @param	value		field value
+	 * @throws	IOException	if I/O exception happens
+	 */
 	private void printField(Writer out, String name, Date value) throws IOException {
 		printField(out, name, "" + value); 
 	}
 
+
+	/**
+	 * Prints an int field.
+	 * 
+	 * @param	out			out put writer	
+	 * @param	name		field name
+	 * @param	value		field value
+	 * @throws	IOException	if I/O exception happens
+	 */
 	private void printField(Writer out, String name, int value) throws IOException {
 		printField(out, name, "" + value); 
 	}
 
+
+	/**
+	 * Prints a String field.
+	 * 
+	 * @param	out			out put writer	
+	 * @param	name		field name
+	 * @param	value		field value
+	 * @throws	IOException	if I/O exception happens
+	 */
 	private void printField(Writer out, String name, String value) throws IOException {
 		out.write("\t" + name + ": " + value + "\n");
 	}
 
+	
+	/**
+	 * Prints a Map.
+	 * 
+	 * @param	out			out put writer	
+	 * @param	name		field name
+	 * @param	value		field value
+	 * @throws	IOException	if I/O exception happens
+	 */
 	private void printMap(Writer out, String name, SortedMap<String,Integer> map) throws IOException {
 		out.write("\t" + name + ":\n");
 		for (String key : map.keySet()) {

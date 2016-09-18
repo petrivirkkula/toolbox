@@ -37,6 +37,7 @@ public interface EventHandler<E extends Event>
 	 */
 	public static final String RCSID = "$Id$";
 	
+	
 	/**
 	 * Processes an event.
 	 * 

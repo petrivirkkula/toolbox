@@ -40,12 +40,13 @@ public class EventException extends Exception
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventException.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventException.class);
 
 	static {
-		logger.loaded(RCSID, EventException.class);
+		LOGGER.loaded(RCSID, EventException.class);
 	}
 
+	
 	/**
 	 * Causing event
 	 */
