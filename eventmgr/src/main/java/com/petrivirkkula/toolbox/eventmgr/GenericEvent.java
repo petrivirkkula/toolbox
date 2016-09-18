@@ -43,10 +43,10 @@ public class GenericEvent implements Event
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(GenericEvent.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(GenericEvent.class);
 
 	static {
-		logger.loaded(RCSID, GenericEvent.class);
+		LOGGER.loaded(RCSID, GenericEvent.class);
 	}
 
 	

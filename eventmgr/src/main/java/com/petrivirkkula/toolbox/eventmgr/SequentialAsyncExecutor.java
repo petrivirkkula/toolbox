@@ -49,10 +49,10 @@ public class SequentialAsyncExecutor implements Executor
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(SequentialAsyncExecutor.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(SequentialAsyncExecutor.class);
 
 	static {
-		logger.loaded(RCSID, SequentialAsyncExecutor.class);
+		LOGGER.loaded(RCSID, SequentialAsyncExecutor.class);
 	}
 
 	/**
@@ -91,22 +91,22 @@ public class SequentialAsyncExecutor implements Executor
 								tasks.wait();
 							}
 							catch(InterruptedException ex) {
-								logger.info("event processing interrupted: " + ex);
-								logger.debug(ex, "event processing interrupted: " + ex);
+								LOGGER.info("event processing interrupted: " + ex);
+								LOGGER.debug(ex, "event processing interrupted: " + ex);
 								return;
 							}
 						}
 						task = tasks.remove(0);
 					}
 					if (task == null) {
-						logger.info("exiting event processing");
+						LOGGER.info("exiting event processing");
 						return;
 					}
 					try {
 						task.run();
 					}
 					catch(Throwable ex) {
-						logger.error(ex, "exception in event processing: " + ex);
+						LOGGER.error(ex, "exception in event processing: " + ex);
 					}
 				}
 			}

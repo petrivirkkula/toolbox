@@ -44,10 +44,10 @@ public class EventSourceTest extends AbstractEventSource
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventSourceTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventSourceTest.class);
 
 	static {
-		logger.loaded(rcsid, EventSourceTest.class);
+		LOGGER.loaded(rcsid, EventSourceTest.class);
 	}
 	
 	private static final Class<GenericEvent> MY_EVENT_CLASS = GenericEvent.class;
@@ -59,7 +59,7 @@ public class EventSourceTest extends AbstractEventSource
 	private EventHandler<GenericEvent> myEventHandler1 = new EventHandler<GenericEvent>() {
 		@Override
 		public void on(GenericEvent event) {
-			logger.debug("myEventHandler1");
+			LOGGER.debug("myEventHandler1");
 			synchronized(counter) {
 				counter[0]++;
 				counter.notify();
@@ -69,7 +69,7 @@ public class EventSourceTest extends AbstractEventSource
 	private EventHandler<GenericEvent> myEventHandler2 = new EventHandler<GenericEvent>() {
 		@Override
 		public void on(GenericEvent event) {
-			logger.debug("myEventHandler2");
+			LOGGER.debug("myEventHandler2");
 			synchronized(counter) {
 				counter[0]++;
 				counter.notify();

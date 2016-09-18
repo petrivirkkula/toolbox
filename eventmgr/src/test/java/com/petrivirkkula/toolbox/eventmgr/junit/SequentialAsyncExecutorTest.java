@@ -47,10 +47,10 @@ public class SequentialAsyncExecutorTest
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(SequentialAsyncExecutorTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(SequentialAsyncExecutorTest.class);
 
 	static {
-		logger.loaded(RCSID, SequentialAsyncExecutorTest.class);
+		LOGGER.loaded(RCSID, SequentialAsyncExecutorTest.class);
 	}
 
 	public static class MySequentialAsyncExecutor extends SequentialAsyncExecutor {
@@ -91,7 +91,7 @@ public class SequentialAsyncExecutorTest
 		SequentialAsyncExecutor executor = new SequentialAsyncExecutor();
 		executor.execute(new Runnable() {
 			public void run() {
-				logger.info("execute");
+				LOGGER.info("execute");
 			}
 		});
 	}
@@ -123,12 +123,12 @@ public class SequentialAsyncExecutorTest
 						try {
 							mutex.wait();
 						} catch (InterruptedException ex) {
-							logger.error(ex, "exception: " + ex);
+							LOGGER.error(ex, "exception: " + ex);
 							fail("interrupted");
 						}
 					}
 				}
-				logger.info("done");
+				LOGGER.info("done");
 			}
 		});
 		bg.setDaemon(true);
@@ -138,7 +138,7 @@ public class SequentialAsyncExecutorTest
 				try {
 					mutex.wait();
 				} catch (InterruptedException ex) {
-					logger.error(ex, "exception: " + ex);
+					LOGGER.error(ex, "exception: " + ex);
 					fail("interrupted");
 				}
 			}
@@ -158,7 +158,7 @@ public class SequentialAsyncExecutorTest
 				try {
 					mutex.wait();
 				} catch (InterruptedException ex) {
-					logger.error(ex, "exception: " + ex);
+					LOGGER.error(ex, "exception: " + ex);
 					fail("interrupted");
 				}
 			}
@@ -176,12 +176,12 @@ public class SequentialAsyncExecutorTest
 				try {
 					mutex.wait();
 				} catch (InterruptedException ex) {
-					logger.error(ex, "exception: " + ex);
+					LOGGER.error(ex, "exception: " + ex);
 					fail("interrupted");
 				}
 			}
 		}
-		logger.info("completed");
+		LOGGER.info("completed");
 	}
 
 	
@@ -197,7 +197,7 @@ public class SequentialAsyncExecutorTest
 		});
 		executor.execute(new Runnable() {
 			public void run() {
-				logger.info("execute");
+				LOGGER.info("execute");
 				synchronized(mutex) {
 					counter++;
 					mutex.notify();
@@ -209,7 +209,7 @@ public class SequentialAsyncExecutorTest
 				try {
 					mutex.wait();
 				} catch (InterruptedException ex) {
-					logger.error(ex, "exception: " + ex);
+					LOGGER.error(ex, "exception: " + ex);
 					fail("interrupted");
 				}
 			}
@@ -219,10 +219,10 @@ public class SequentialAsyncExecutorTest
 		executor.execute(new Runnable() {
 			public void run() {
 				try {
-					logger.info("execute");
+					LOGGER.info("execute");
 					Thread.sleep(5000);
 				} catch (InterruptedException ex) {
-					logger.error(ex, "exception: " + ex);
+					LOGGER.error(ex, "exception: " + ex);
 					fail("interrupted");
 				}
 			}
@@ -244,7 +244,7 @@ public class SequentialAsyncExecutorTest
 
 		executor.execute(new Runnable() {
 			public void run() {
-				logger.info("execute");
+				LOGGER.info("execute");
 			}
 		});
 		Thread.sleep(1000);

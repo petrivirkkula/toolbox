@@ -47,11 +47,11 @@ public class GenericEventTest
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(GenericEventTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(GenericEventTest.class);
 
 
 	static {
-		logger.loaded(RCSID, GenericEventTest.class);
+		LOGGER.loaded(RCSID, GenericEventTest.class);
 	}
 
 	

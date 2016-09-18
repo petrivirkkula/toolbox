@@ -53,10 +53,10 @@ public class HandlerExceptionTest
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(HandlerExceptionTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(HandlerExceptionTest.class);
 
 	static {
-		logger.loaded(RCSID, HandlerExceptionTest.class);
+		LOGGER.loaded(RCSID, HandlerExceptionTest.class);
 	}
 	
 	
@@ -88,7 +88,7 @@ public class HandlerExceptionTest
 		EventHandler<GenericEvent> eventHandler = new EventHandler<GenericEvent>() {
 			@Override
 			public void on(GenericEvent event) {
-				logger.info("on GenericEvent: " + event);
+				LOGGER.info("on GenericEvent: " + event);
 				synchronized(counter) {
 					counter[0]++;
 					counter.notify();
