@@ -27,7 +27,7 @@
 	<parent>
 		<groupId>com.petrivirkkula.toolbox</groupId>
 		<artifactId>toolbox</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>toolbox-eventmgr</artifactId>
 	<name>Toolbox Eventmgr Classes</name>
@@ -50,7 +50,7 @@
 	    <url>scm:git:git@github.com:petrivirkkula/toolbox.git</url>
 		<developerConnection>scm:git:git@github.com:petrivirkkula/toolbox.git</developerConnection>
     </scm>
-  	<distributionManagement>
+	<distributionManagement>
 		<repository>
 			<id>ossrh</id>
 			<name>OSS Releases</name>
