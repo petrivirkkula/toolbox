@@ -57,10 +57,10 @@ public class EventManagerTest
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventManagerTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventManagerTest.class);
 
 	static {
-		logger.loaded(RCSID, EventManagerTest.class);
+		LOGGER.loaded(RCSID, EventManagerTest.class);
 	}
 
 	public static abstract class MyAbstractEventManager extends EventManagerSpi {

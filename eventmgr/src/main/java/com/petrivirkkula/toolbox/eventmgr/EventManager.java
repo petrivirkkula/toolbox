@@ -43,10 +43,10 @@ public abstract class EventManager
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventManager.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventManager.class);
 
 	static {
-		logger.loaded(RCSID, EventManager.class);
+		LOGGER.loaded(RCSID, EventManager.class);
 	}
 
 	/**
@@ -100,11 +100,11 @@ public abstract class EventManager
 			eventManager.initialize(executorFactory);
 		} 
 		catch (InstantiationException ex) {
-			logger.error("exception in event manager creation: " + ex);
+			LOGGER.error("exception in event manager creation: " + ex);
 			throw new EventRuntimeException(ex);
 		}
 		catch (IllegalAccessException ex) {
-			logger.error("exception in event manager creation: " + ex);
+			LOGGER.error("exception in event manager creation: " + ex);
 			throw new EventRuntimeException(ex);
 		}
 		return eventManager;

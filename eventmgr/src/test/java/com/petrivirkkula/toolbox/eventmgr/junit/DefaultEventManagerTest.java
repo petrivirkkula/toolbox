@@ -55,11 +55,11 @@ public class DefaultEventManagerTest
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(DefaultEventManagerTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(DefaultEventManagerTest.class);
 
 
 	static {
-		logger.loaded(RCSID, DefaultEventManagerTest.class);
+		LOGGER.loaded(RCSID, DefaultEventManagerTest.class);
 	}
 
 	

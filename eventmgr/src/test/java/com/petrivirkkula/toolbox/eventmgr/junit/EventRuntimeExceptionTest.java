@@ -46,16 +46,16 @@ public class EventRuntimeExceptionTest
 	/**
 	 * Logger
 	 */
-	private static final com.petrivirkkula.toolbox.logger.Logger logger = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventRuntimeExceptionTest.class);
+	private static final com.petrivirkkula.toolbox.logger.Logger LOGGER = com.petrivirkkula.toolbox.logger.Logger.getLogger(EventRuntimeExceptionTest.class);
 
 	static {
-		logger.loaded(RCSID, EventRuntimeExceptionTest.class);
+		LOGGER.loaded(RCSID, EventRuntimeExceptionTest.class);
 	}
 
 	
 	private static final String TEST_MESSAGE = "Test Message";
 	static {
-		logger.debug("TEST_MESSAGE=" + TEST_MESSAGE);
+		LOGGER.debug("TEST_MESSAGE=" + TEST_MESSAGE);
 	}
 	
 	
@@ -65,16 +65,16 @@ public class EventRuntimeExceptionTest
 			TEST_EVENT = new GenericEvent("test.event");
 		}
 		catch(Throwable th) {
-			logger.error(th, "exception: " + th);
+			LOGGER.error(th, "exception: " + th);
 		}
 	}
 	static {
-		logger.debug("TEST_EVENT=" + TEST_EVENT);
+		LOGGER.debug("TEST_EVENT=" + TEST_EVENT);
 	}
 
 	private static final Exception TEST_CAUSE = new Exception("test exception");
 	static {
-		logger.debug("TEST_CAUSE=" + TEST_CAUSE);
+		LOGGER.debug("TEST_CAUSE=" + TEST_CAUSE);
 	}
 
 	
