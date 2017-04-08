@@ -65,7 +65,7 @@
 	</distributionManagement>
 	<modules>
 		<module>toolbox-netsock-core</module>
-		<module>toolbox-netsock-http</module>
+		
 		<module>toolbox-netsock-proto</module>
 	</modules>
 	<properties>
