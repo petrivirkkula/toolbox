@@ -73,13 +73,10 @@
 		<gpg.version>1.6</gpg.version>
 		<javadoc.version>2.10.4</javadoc.version>
 		<source.version>3.0.1</source.version>
-		<toolbox.version>1.0.0-SNAPSHOT</toolbox.version>
+		<toolbox.version>1.0.0</toolbox.version>
 		<toolbox.logger.version>${toolbox.version}</toolbox.logger.version>
 		<toolbox.eventmgr.version>${toolbox.version}</toolbox.eventmgr.version>
 		<toolbox.netsock.version>${toolbox.version}</toolbox.netsock.version>
-		<toolbox.netsock.core.version>${toolbox.version}</toolbox.netsock.core.version>
-		<toolbox.netsock.proto.version>${toolbox.version}</toolbox.netsock.proto.version>
-		<toolbox.netsock.http.version>${toolbox.version}</toolbox.netsock.http.version>
 	</properties>
 
 	<dependencyManagement>

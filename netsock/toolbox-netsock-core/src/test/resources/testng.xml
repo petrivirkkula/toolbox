@@ -1,0 +1,35 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+  
+<suite name="Suite1" verbose="1" >
+  <test name="Everything">
+    <packages>
+      <package name="com.petrivirkkula.toolbox.netsock.testng"/>
+    </packages>
+  </test>
+  <!-- 
+  <test name="SystemTest">
+  	<groups>
+  		<run><include name="systemtest"/></run>
+  	</groups>
+    <packages>
+      <package name="com.petrivirkkula.toolbox.netsock.testng"/>
+    </packages>
+  </test>
+  <test name="UnitTest">
+  	<groups>
+  		<run><include name="unittest"/></run>
+  	</groups>
+    <packages>
+      <package name="com.petrivirkkula.toolbox.netsock.testng"/>
+    </packages>
+  </test>
+  <test name="LoadTest">
+   	<groups>
+  		<run><include name="loadtest"/></run>
+  	</groups>
+    <packages>
+      <package name="com.petrivirkkula.toolbox.netsock.testng"/>
+    </packages>
+  </test>
+   -->
+</suite>
