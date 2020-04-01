@@ -69,7 +69,7 @@
 		<war.version>3.0.0</war.version>
 		<compiler.version>3.5.1</compiler.version>
 		<pmd.version>3.6</pmd.version>
-		<surefire.version>2.18.1</surefire.version>
+		<surefire.version>2.22.2</surefire.version>
 		<gpg.version>1.6</gpg.version>
 		<javadoc.version>2.10.4</javadoc.version>
 		<source.version>3.0.1</source.version>
