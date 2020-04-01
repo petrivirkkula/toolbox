@@ -62,8 +62,8 @@
 	</distributionManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jmockit.version>1.0</jmockit.version>
-		<jmockit.coverage.version>0.999.19</jmockit.coverage.version>
+		<jmockit.version>1.49</jmockit.version>
+		<jmockit.coverage.version>1.9</jmockit.coverage.version>
 		<maven.pmd.rulesetfiles>rulesets/basic.xml,rulesets/unusedcode.xml,rulesets/imports.xml</maven.pmd.rulesetfiles>
 		<maven.testng.suitexml.dir>${basedir}/src/test/resources</maven.testng.suitexml.dir>
 		<war.version>3.0.0</war.version>
