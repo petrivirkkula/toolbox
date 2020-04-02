@@ -44,7 +44,7 @@ public class TestLoggerImpl
 
 	private static class TestException extends Exception {
 		private static final long serialVersionUID = 1L; 		
-	};
+	}
 
 	public static final String LOGCATEGORY = "TestLoggerImpl";
 
@@ -68,13 +68,13 @@ public class TestLoggerImpl
 	@Test
 	public void testEqualsObject() {
 		LoggerImpl logger1 = new LoggerImpl(LOGCATEGORY);
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder());
 		sb.append("Test");
 		sb.append("LoggerImpl");
 		LoggerImpl logger2 = new LoggerImpl(sb.toString());
 		sb.append("3");
 		LoggerImpl logger3 = new LoggerImpl(sb.toString());
-		assertTrue(logger1.equals(logger2));
+		assertEquals(logger1, logger2);
 		assertFalse(logger1.equals(logger3));
 		assertFalse(logger1.equals(null));
 		try {
@@ -152,12 +152,9 @@ public class TestLoggerImpl
 		new Expectations() {
 			{
 				slf4jLogger.isTraceEnabled(); result = true; times = 1;
-				slf4jLogger.trace(LOGSTRING); times = 1;
-				slf4jLogger.isTraceEnabled(); result = true; times = 1;
 				slf4jLogger.trace(LOGSTRING, TESTEXCEPTION); times = 1;
 			}
 		};
-		tested.trace(LOGSTRING);
 		tested.trace(LOGSTRING, TESTEXCEPTION);
 	}
 
@@ -175,7 +172,6 @@ public class TestLoggerImpl
 		tested.trace(LOGSTRING);
 	}
 
-
 	/**
 	 * Test method for {@link com.petrivirkkula.toolbox.logger.ILogger#debug()}.
 	 */
@@ -184,15 +180,11 @@ public class TestLoggerImpl
 		new Expectations() {
 			{
 				slf4jLogger.isDebugEnabled(); result = true; times = 1;
-				slf4jLogger.debug(LOGSTRING); times = 1;
-				slf4jLogger.isDebugEnabled(); result = true; times = 1;
 				slf4jLogger.debug(LOGSTRING, TESTEXCEPTION); times = 1;
 			}
 		};
-		tested.debug(LOGSTRING);
 		tested.debug(LOGSTRING, TESTEXCEPTION);
 	}
-
 	/**
 	 * Test method for {@link com.petrivirkkula.toolbox.logger.ILogger#debug()}.
 	 */
@@ -216,12 +208,9 @@ public class TestLoggerImpl
 		new Expectations() {
 			{
 				slf4jLogger.isInfoEnabled(); result = true; times = 1;
-				slf4jLogger.info(LOGSTRING); times = 1;
-				slf4jLogger.isInfoEnabled(); result = true; times = 1;
 				slf4jLogger.info(LOGSTRING, TESTEXCEPTION); times = 1;
 			}
 		};
-		tested.info(LOGSTRING);
 		tested.info(LOGSTRING, TESTEXCEPTION);
 	}
 
@@ -248,12 +237,9 @@ public class TestLoggerImpl
 		new Expectations() {
 			{
 				slf4jLogger.isWarnEnabled(); result = true; times = 1;
-				slf4jLogger.warn(LOGSTRING); times = 1;
-				slf4jLogger.isWarnEnabled(); result = true; times = 1;
 				slf4jLogger.warn(LOGSTRING, TESTEXCEPTION); times = 1;
 			}
 		};
-		tested.warn(LOGSTRING);
 		tested.warn(LOGSTRING, TESTEXCEPTION);
 	}
 
@@ -282,12 +268,9 @@ public class TestLoggerImpl
 		new Expectations() {
 			{
 				slf4jLogger.isErrorEnabled(); result = true; times = 1;
-				slf4jLogger.error(LOGSTRING); times = 1;
-				slf4jLogger.isErrorEnabled(); result = true; times = 1;
 				slf4jLogger.error(LOGSTRING, TESTEXCEPTION); times = 1;
 			}
 		};
-		tested.error(LOGSTRING);
 		tested.error(LOGSTRING, TESTEXCEPTION);
 	}
 
@@ -315,12 +298,9 @@ public class TestLoggerImpl
 		new Expectations() {
 			{
 				slf4jLogger.isErrorEnabled(); result = true; times = 1;
-				slf4jLogger.error(LOGSTRING, (Exception)withNotNull()); times = 1;
-				slf4jLogger.isErrorEnabled(); result = true; times = 1;
 				slf4jLogger.error(LOGSTRING, TESTEXCEPTION); times = 1;
 			}
 		};
-		tested.fatal(LOGSTRING);
 		tested.fatal(LOGSTRING, TESTEXCEPTION);
 	}
 

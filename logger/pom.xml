@@ -25,7 +25,7 @@
 	<parent>
 		<artifactId>toolbox</artifactId>
 		<groupId>com.petrivirkkula.toolbox</groupId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 	</parent>
 	<artifactId>toolbox-logger</artifactId>
 	<name>Toolbox Logging Classes</name>
@@ -65,13 +65,13 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.googlecode.jmockit</groupId>
+			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
 			<version>${jmockit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.jmockit</groupId>
+			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit-coverage</artifactId>
 			<version>${jmockit.coverage.version}</version>
 			<scope>test</scope>
@@ -87,28 +87,17 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jmx</groupId>
-					<artifactId>jmxri</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
 	<build>
@@ -172,8 +161,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -187,11 +176,13 @@
 				</dependencies>
 				<configuration>
 					<argLine>
-						-javaagent:"${settings.localRepository}"/com/googlecode/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-						-Djmockit-coverage-outputDir=${project.build.directory}/test-coverage-report
-						-Djmockit-coverage-output=html
-						-Djmockit-coverage-check="Total:80,50,70;perFile:80,50,70;com.petrivirkkula.toolbox:80,50,70"
+						-javaagent:"${settings.localRepository}"/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+						-Dcoverage-outputDir="${project.build.directory}/test-coverage-report"
+						-Dcoverage-output=html
 					</argLine>
+					<!--
+					-Dcoverage-check="Total:80,50,70\;perFile:80,50,70\;com.petrivirkkula.toolbox:80,50,70"
+					-->
 				</configuration>
 			</plugin>
 		</plugins>

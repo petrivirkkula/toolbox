@@ -23,7 +23,7 @@ package com.petrivirkkula.toolbox.logger.junit;
 
 import static org.junit.Assert.*;
 
-import org.apache.log4j.Logger;
+import com.petrivirkkula.toolbox.logger.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
