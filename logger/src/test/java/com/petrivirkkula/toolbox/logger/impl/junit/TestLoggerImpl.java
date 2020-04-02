@@ -68,7 +68,7 @@ public class TestLoggerImpl
 	@Test
 	public void testEqualsObject() {
 		LoggerImpl logger1 = new LoggerImpl(LOGCATEGORY);
-		StringBuilder sb = new StringBuilder());
+		StringBuilder sb = new StringBuilder();
 		sb.append("Test");
 		sb.append("LoggerImpl");
 		LoggerImpl logger2 = new LoggerImpl(sb.toString());
