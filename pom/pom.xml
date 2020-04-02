@@ -71,7 +71,7 @@
 		<pmd.version>3.6</pmd.version>
 		<surefire.version>2.22.2</surefire.version>
 		<gpg.version>1.6</gpg.version>
-		<javadoc.version>2.10.4</javadoc.version>
+		<javadoc.version>3.2.0</javadoc.version>
 		<source.version>3.0.1</source.version>
 		<toolbox.version>1.1.0</toolbox.version>
 		<toolbox.logger.version>${toolbox.version}</toolbox.logger.version>
