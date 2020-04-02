@@ -193,10 +193,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
+					<source>8</source>
 					<docfilessubdirs>true</docfilessubdirs>
 					<linksource>true</linksource>
 					<links>
-						<link>http://download.oracle.com/javase/6/docs/api/</link>
+						<link>http://download.oracle.com/javase/8/docs/api/</link>
 						<link>http://download.oracle.com/javaee/6/api/</link>
 						<link>http://jakarta.apache.org/commons/collections/apidocs</link>
 						<link>http://jakarta.apache.org/commons/logging/apidocs/</link>
