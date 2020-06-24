@@ -12,3 +12,5 @@ buildNumber.properties
 .project
 .idea
 toolbox-logger.iml
+*.iml
+.idea
