@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.petrivirkkula.toolbox</groupId>
 		<artifactId>toolbox-netsock</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.1</version>
 		</parent>
 	<artifactId>toolbox-netsock-core</artifactId>
 	<licenses>
@@ -39,19 +39,21 @@
 	</distributionManagement>
  	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jmockit.version>1.0</jmockit.version>
-		<jmockit.coverage.version>0.999.19</jmockit.coverage.version>
+		<jmockit.version>1.49</jmockit.version>
+		<jmockit.coverage.version>1.9</jmockit.coverage.version>
 		<maven.pmd.rulesetfiles>rulesets/basic.xml, rulesets/unusedcode.xml, rulesets/imports.xml</maven.pmd.rulesetfiles>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>com.googlecode.jmockit</groupId>
+			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
+			<version>${jmockit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		 	<groupId>com.googlecode.jmockit</groupId>
-		 	<artifactId>jmockit-coverage</artifactId> 
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit-coverage</artifactId>
+			<version>${jmockit.coverage.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -65,24 +67,17 @@
   			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.slf4j</groupId>
-     		<artifactId>slf4j-log4j12</artifactId>
-     		<scope>test</scope>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>com.sun.jdmk</groupId>
-					<artifactId>jmxtools</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.jmx</groupId>
-					<artifactId>jmxri</artifactId>
-				</exclusion>
-			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.petrivirkkula.toolbox</groupId>
@@ -129,21 +124,14 @@
 					</execution>
 				</executions>
 				<configuration>
+					<source>8</source>
 					<docfilessubdirs>true</docfilessubdirs>
 					<linksource>true</linksource>
-<!--
-					<links>
-						<link>http://download.oracle.com/javase/6/docs/api/</link>
-						<link>http://download.oracle.com/javaee/6/api/</link>
-						<link>http://jakarta.apache.org/commons/collections/apidocs</link>
-						<link>http://jakarta.apache.org/commons/logging/apidocs/</link>
-						<link>http://junit.sourceforge.net/javadoc/</link>
-						<link>http://logging.apache.org/log4j/1.2/apidocs/</link>
-						<link>http://jakarta.apache.org/regexp/apidocs/</link>
-						<link>http://jakarta.apache.org/velocity/api/</link>
-					</links>
--->
-				</configuration>
+					<!-- <links> <link>http://download.oracle.com/javase/6/docs/api/</link>
+						<link>http://download.oracle.com/javaee/6/api/</link> <link>http://jakarta.apache.org/commons/collections/apidocs</link>
+						<link>http://jakarta.apache.org/commons/logging/apidocs/</link> <link>http://junit.sourceforge.net/javadoc/</link>
+						<link>http://logging.apache.org/log4j/1.2/apidocs/</link> <link>http://jakarta.apache.org/regexp/apidocs/</link>
+						<link>http://jakarta.apache.org/velocity/api/</link> </links> -->				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -168,15 +156,22 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit47</artifactId>
+						<version>${surefire.version}</version>
+					</dependency>
+				</dependencies>
 				<configuration>
 					<argLine>
-						-javaagent:"${settings.localRepository}"/com/googlecode/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-						-Djmockit-coverage-outputDir=${project.build.directory}/test-coverage-report
-						-Djmockit-coverage-output=html
-						<!-- 
-						-Djmockit-coverage-check="Total:80,50,70;perFile:80,50,70;com.toolbox:80,50,70"
-						 -->
+						-javaagent:"${settings.localRepository}"/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+						-Dcoverage-outputDir=${project.build.directory}/test-coverage-report
+						-Dcoverage-output=html
 					</argLine>
+					<!--
+                    -Djmockit-coverage-check="Total:80,50,70;perFile:80,50,70;com.toolbox:80,50,70"
+                     -->
 				</configuration>
 			</plugin>
 	    	<plugin>
