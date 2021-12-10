@@ -59,7 +59,7 @@ public class NSServerServiceSpi extends NSServiceSpi implements NSServerService
 	 *
 	 * $Id$
 	 */
-	public static final String RCSID = "$Id: NSServerServiceSpi.java 142 2015-08-23 13:34:02Z petri $";
+	public static final String RCSID = "$Id$";
 
 	/**
 	 * Logger

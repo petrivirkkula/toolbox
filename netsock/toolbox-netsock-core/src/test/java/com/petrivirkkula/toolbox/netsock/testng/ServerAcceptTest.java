@@ -52,7 +52,7 @@ public class ServerAcceptTest
 	 *
 	 * $Id$
 	 */
-	public static final String RCSID = "$Id: ServerAcceptTest.java 142 2015-08-23 13:34:02Z petri $";
+	public static final String RCSID = "$Id$";
 
 	/**
 	 * Logger
