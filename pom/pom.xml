@@ -28,7 +28,7 @@
 	<artifactId>toolbox</artifactId>
 	<packaging>pom</packaging>
 	<name>Toolbox Master Project</name>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<description>Toolbox Master Project</description>
 	<url>http://github.com/petrivirkkula/toolbox/</url>
 	<licenses>
